@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import {createBrowserHistory} from 'history';
+import {Router, Route, Switch} from "react-router-dom";
+
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+export const history = createBrowserHistory();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // render App
+    return (
+        <div className="App">
+            <Router history={history}>
+                <Switch>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/home" exact component={Home}/>
+                    <Route path="/login" exact component={Login} />
+
+                    {/*<Route path="/moive/:id" exact component={Movie} />*/}
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
